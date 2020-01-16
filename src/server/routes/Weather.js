@@ -15,9 +15,6 @@ router.get('/getWeatherByName/:name', (req, res) => {
 
   const apiUrl = baseUrl + name + appKey;
 
-  console.log(appKey);
-  console.log(apiUrl);
-
   fetch(apiUrl)
     .then(data => data.json())
     .then(data => res.json(data));
