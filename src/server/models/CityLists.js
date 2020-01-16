@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const CityListSchema = new Schema({
+const CityListSchema = new mongoose.Schema({
   id: Number,
   name: String,
   country: String,
@@ -12,4 +10,4 @@ const CityListSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Citylist', CityListSchema);
+module.exports = mongoose.model('CityList', CityListSchema, 'CityLists');
