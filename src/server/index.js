@@ -6,12 +6,14 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 
-// Import Routes
-app.use('/api', require('./routes/Weather'));
-app.use('/api/user', require('./routes/Auth'));
-
 // Middlewares
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Import Routes
+app.use('/api', require('./routes/WeatherRoute'));
+app.use('/api/user', require('./routes/AuthRoute'));
+
 
 // Establishing MongoDB connection
 mongoose.connect(process.env.MONGO_KEY,

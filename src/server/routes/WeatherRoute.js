@@ -1,5 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const { auth } = require('../middleware/VerifyToken');
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ const router = express.Router();
 const CityList = require('../models/CityLists');
 
 
-router.get('/getWeatherByName/:name', (req, res) => {
+router.get('/getWeatherByName/:name', auth, (req, res) => {
   const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
   const { name } = req.params;
   const appKey = process.env.WEATHER_API_KEY;
@@ -17,7 +18,7 @@ router.get('/getWeatherByName/:name', (req, res) => {
 
   fetch(apiUrl)
     .then(data => data.json())
-    .then(data => res.json(data));
+    .then(data => res.json({ data }));
 });
 
 
