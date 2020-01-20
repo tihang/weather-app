@@ -3,12 +3,13 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 // Serve static contents
 app.use(express.static(path.join(`${__dirname}../../../dist`)));
-
+app.use(cors());
 app.use(express.json());
 
 // Middlewares
