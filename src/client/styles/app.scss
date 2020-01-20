@@ -5,4 +5,20 @@ h1 {
 body {
   text-align: center;
   margin: auto;
+
+  nav {
+    width: 100%;
+    height: auto;
+    h3 {
+      float: left;
+    }
+    ul {
+      list-style: none;
+      font-size: x-large;
+      li {
+        display: inline;
+        padding: 10px;
+      }
+    }
+  }
 }

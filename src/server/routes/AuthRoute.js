@@ -9,7 +9,6 @@ router.post('/register', async (req, res) => {
   // Destructuring error from ValidationResult
   const { error } = UserValidation.registerValidation(req.body);
   // Returns error object if there is validation error, else returns null
-  console.log(error);
 
   if (error) return res.status(400).send({ message: error.details[0].message });
 

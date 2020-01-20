@@ -14,16 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', require('./routes/WeatherRoute'));
 app.use('/api/user', require('./routes/AuthRoute'));
 
-
 // Establishing MongoDB connection
-mongoose.connect(process.env.MONGO_KEY,
-  {
-    useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, ssl: true, dbName: 'weatherapp'
-  });
+mongoose.connect(process.env.MONGO_KEY, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  ssl: true,
+  dbName: 'weatherapp'
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('MONGOOSE CONNECTION SUCCESSFUL'));
-
 
 // Serve static contents
 app.use(express.static('dist'));
