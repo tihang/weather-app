@@ -1,9 +1,15 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
+
+// Serve static contents
+// app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.use(express.json());
 
 // Middlewares
@@ -26,8 +32,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('MONGOOSE CONNECTION SUCCESSFUL'));
 
-// Serve static contents
-app.use(express.static('dist'));
+// Handles any requests that don't match the ones above
+app.get('*', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/dist/index.html`));
+});
 
 // Start Server
 app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
