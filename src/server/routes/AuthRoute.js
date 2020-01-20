@@ -4,12 +4,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const UserValidation = require('../helpers/UserValidation');
 
-
 router.post('/register', async (req, res) => {
   // Validating data using our helper-UserValidation
   // Destructuring error from ValidationResult
   const { error } = UserValidation.registerValidation(req.body);
   // Returns error object if there is validation error, else returns null
+  console.log(error);
+
   if (error) return res.status(400).send({ message: error.details[0].message });
 
   // Check if user is existing user
@@ -28,12 +29,11 @@ router.post('/register', async (req, res) => {
 
   try {
     const newUser = await user.save();
-    return res.send({ user: newUser.id });
+    return res.status(201).send({ message: 'User Created', user: newUser.id });
   } catch (err) {
     return res.status(400).send(err);
   }
 });
-
 
 router.post('/login', async (req, res) => {
   // Validating login data our helper-UserValidation
@@ -52,7 +52,10 @@ router.post('/login', async (req, res) => {
   // Create and assign token
   const token = jwt.sign({ user: user.id }, process.env.JWT_TOKEN_SECRET);
 
-  return res.header('auth-token', token).status(200).send({ message: 'Logged In', user: user.email });
+  return res
+    .header('auth-token', token)
+    .status(200)
+    .send({ message: 'Logged In', user: user.email });
 });
 
 module.exports = router;

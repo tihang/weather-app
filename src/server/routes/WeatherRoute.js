@@ -4,6 +4,11 @@ const { auth } = require('../middleware/VerifyToken');
 
 const router = express.Router();
 
+// Safe regex against DDOS
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 // Importing CityList schema
 const CityList = require('../models/CityLists');
 
@@ -20,9 +25,8 @@ router.get('/getWeatherById', auth, (req, res) => {
 });
 
 router.get('/getCityByName', async (req, res) => {
-  const { name } = req.query;
-  const cities = await CityList.find({ name }, ['id', 'name']);
-
+  const regex = new RegExp(escapeRegex(req.query.name), 'gi');
+  const cities = await CityList.find({ name: { $regex: regex } }, ['id', 'name']);
   try {
     res.status(200).send(cities);
   } catch (error) {
