@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Serve static contents
-app.use(express.static('dist'));
+app.use(express.static(path.join(`${__dirname}../../../dist`)));
 
 app.use(express.json());
 
@@ -32,7 +32,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('MONGOOSE CONNECTION SUCCESSFUL'));
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(`${__dirname}../../../dist/index.html`));
 });
 
