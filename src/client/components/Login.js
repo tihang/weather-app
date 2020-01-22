@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     Axios.post('/api/user/login', { email, password })
       .then((res) => {
         setMessage(res.data.message);
         localStorage.setItem('auth-token', res.headers['auth-token']);
+        history.push('/protected');
+        window.location.reload(false);
       })
       .catch(err => setMessage(err.response.data.message));
   };
@@ -41,6 +47,6 @@ function Login() {
       <h3>{message}</h3>
     </div>
   );
-}
+};
 
 export default Login;
