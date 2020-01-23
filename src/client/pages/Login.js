@@ -16,7 +16,7 @@ const Login = () => {
       .then((res) => {
         setMessage(res.data.message);
         localStorage.setItem('auth-token', res.headers['auth-token']);
-        history.push('/protected');
+        history.push('/profile');
         window.location.reload(false);
       })
       .catch(err => setMessage(err.response.data.message));

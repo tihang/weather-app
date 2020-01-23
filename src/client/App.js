@@ -2,10 +2,11 @@ import React from 'react';
 import './app.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import PrivateRoute from './helpers/PrivateRoute';
-import Protected from './components/Protected';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
 
 export const AuthContext = React.createContext();
 
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/protected" component={Protected} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/search/:id" component={Search} />
         </Switch>
       </div>
     </Router>

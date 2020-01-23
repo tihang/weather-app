@@ -21,8 +21,8 @@ const userLink = () => (
     <Link to="/">
       <li>Home</li>
     </Link>
-    <Link to="/protected">
-      <li>Protected</li>
+    <Link to="/profile">
+      <li>Profile</li>
     </Link>
     <Link to="/logout" onClick={logout}>
       <li>Logout</li>

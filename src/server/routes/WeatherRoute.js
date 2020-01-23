@@ -24,9 +24,9 @@ router.get('/getWeatherById', auth, (req, res) => {
     .then(data => res.json({ data }));
 });
 
-router.get('/getCityByName', async (req, res) => {
+router.get('/getCityByName', auth, async (req, res) => {
   const regex = new RegExp(escapeRegex(req.query.name), 'gi');
-  const cities = await CityList.find({ name: { $regex: regex } }, ['id', 'name']);
+  const cities = await CityList.find({ name: { $regex: regex } }, ['id', 'name', 'country']);
   try {
     res.status(200).send(cities);
   } catch (error) {
