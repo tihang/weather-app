@@ -7,14 +7,9 @@ import Login from './pages/Login';
 import PrivateRoute from './helpers/PrivateRoute';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
+import Home from './pages/Home';
 
 export const AuthContext = React.createContext();
-
-const Home = () => (
-  <div>
-    <h1>Home</h1>
-  </div>
-);
 
 function App() {
   return (

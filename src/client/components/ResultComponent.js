@@ -6,10 +6,11 @@ const ResultComponent = ({ Result }) => (
   <div className="result-component">
     {Result.map(item => (
       <ul key={item.id}>
-        <li>{item.id}</li>
         <li>{item.name}</li>
         <li>{item.country}</li>
-        <Link to={`/search/${item.id}`}>Get Weather info</Link>
+        <Link to={`/search/${item.id}`}>
+          <button type="button">Get info</button>
+        </Link>
       </ul>
     ))}
   </div>

@@ -22,7 +22,7 @@ const Login = () => {
       .catch(err => setMessage(err.response.data.message));
   };
   return (
-    <div>
+    <div className="login-page">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input

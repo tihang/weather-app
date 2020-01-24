@@ -16,13 +16,13 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className="signup-page">
       <h1>Signup</h1>
       <form onSubmit={handleSubmit}>
         <input
           name="email"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           autoComplete="off"
           onChange={e => setEmail(e.target.value)}
         />
@@ -30,7 +30,7 @@ function Signup() {
         <input
           name="name"
           type="text"
-          placeholder="name"
+          placeholder="Name"
           autoComplete="off"
           onChange={e => setName(e.target.value)}
         />
@@ -38,7 +38,7 @@ function Signup() {
         <input
           name="password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           autoComplete="off"
           onChange={e => setPassword(e.target.value)}
         />

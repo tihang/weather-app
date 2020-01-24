@@ -5,10 +5,6 @@ export default function SearchComponent() {
   const [CityName, setCityName] = useState([]);
   const [Result, setResult] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const handleChange = async (e) => {
     setCityName(e.target.value);
   };
@@ -30,10 +26,7 @@ export default function SearchComponent() {
 
   return (
     <div className="search-component">
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
+      <input type="text" onChange={handleChange} />
       <ResultComponent Result={Result} />
     </div>
   );

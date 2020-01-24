@@ -2,9 +2,15 @@ import React from 'react';
 import '../styles/app.scss';
 import { Link } from 'react-router-dom';
 import { isLoggedIn, logout } from '../helpers/Auth';
+import Logo from '../assets/logo.png';
 
 const guestLinks = () => (
   <ul>
+    <Link to="/">
+      <li>
+        <img src={Logo} alt="Logo" />
+      </li>
+    </Link>
     <Link to="/">
       <li>Home</li>
     </Link>
@@ -18,8 +24,10 @@ const guestLinks = () => (
 );
 const userLink = () => (
   <ul>
-    <Link to="/">
-      <li>Home</li>
+    <Link to="/profile">
+      <li>
+        <img src={Logo} alt="Logo" />
+      </li>
     </Link>
     <Link to="/profile">
       <li>Profile</li>
