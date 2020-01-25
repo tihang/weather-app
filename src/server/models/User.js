@@ -22,7 +22,10 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  savedCityId: [{
+    type: Number
+  }]
 });
 
 module.exports = mongoose.model('User', UserSchema, 'Users');

@@ -58,8 +58,13 @@ router.post('/login', async (req, res) => {
     .send({ message: 'Logged In', user: user.email });
 });
 
-router.get('/checkToken', auth, (req, res) => {
-  res.sendStatus(200);
+router.get('/verify', auth, async (req, res) => {
+  try {
+    const user = await User.findOne(req.user.id);
+    if (user) res.status(200).send(true);
+  } catch (error) {
+    res.status(401).send({ error });
+  }
 });
 
 module.exports = router;

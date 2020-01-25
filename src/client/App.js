@@ -9,8 +9,6 @@ import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Home from './pages/Home';
 
-export const AuthContext = React.createContext();
-
 function App() {
   return (
     <Router>

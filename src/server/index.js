@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Import Routes
 app.use('/api', require('./routes/WeatherRoute'));
 app.use('/api/user', require('./routes/AuthRoute'));
+app.use('/api', require('./routes/ProfileRoute'));
 
 // Establishing MongoDB connection
 mongoose.connect(process.env.MONGO_KEY, {
