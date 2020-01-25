@@ -12,13 +12,17 @@ export default function SearchComponent() {
   useEffect(() => {
     async function getData() {
       if (CityName.length >= 3) {
-        const response = await fetch(`/api/getCityByName?name=${CityName}`, {
-          headers: {
-            'auth-token': localStorage.getItem('auth-token')
-          }
-        });
-        const json = await response.json();
-        setResult(json);
+        try {
+          const response = await fetch(`/api/getCityByName?name=${CityName}`, {
+            headers: {
+              'auth-token': localStorage.getItem('auth-token')
+            }
+          });
+          const json = await response.json();
+          setResult(json);
+        } catch (error) {
+          setResult(error);
+        }
       }
     }
     getData();
