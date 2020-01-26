@@ -18,11 +18,11 @@ const DetailCardComponent = ({ data }) => {
   };
 
   return (
-    <div>
-      <button type="button" className="metric-btn" onClick={toggleMetrics}>
-        C°/ F°
-      </button>
+    <div className="detail-card-component">
       <ul>
+        <button type="button" className="metric-btn" onClick={toggleMetrics}>
+          C°/ F°
+        </button>
         <li>{data.name}</li>
         <li>{data.weatherMain}</li>
         <li>{`Temperature: ${metricFunction.call(data.mainTemp)} °${metric} `}</li>

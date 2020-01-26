@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import Axios from 'axios';
 import DetailCardComponent from '../components/DetailCardComponent';
 
 const Search = () => {
   const [searchData, setSearchData] = useState({
+    id: '',
     name: '',
     weatherMain: '',
     mainTemp: '',
@@ -13,9 +14,25 @@ const Search = () => {
     mainTempMin: ''
   });
 
+  const [message, setMessage] = useState('');
+
   const history = useHistory();
 
   const { id } = useParams();
+
+  const addToWatchList = async () => {
+    try {
+      const result = await Axios.post(
+        '/api/profile/favorite/create',
+        { savedCityId: searchData.id },
+        { headers: { 'auth-token': localStorage.getItem('auth-token') } }
+      );
+      if (result.status === 200) setMessage('Successfully added');
+    } catch (error) {
+      setMessage('Oops something went wrong!');
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,6 +42,7 @@ const Search = () => {
         });
 
         setSearchData({
+          id: result.data.data.id,
           name: result.data.data.name,
           weatherMain: result.data.data.weather[0].main,
           mainTemp: result.data.data.main.temp,
@@ -46,8 +64,12 @@ const Search = () => {
       </button>
       <h1>Detail</h1>
       <DetailCardComponent data={searchData} />
-      <button className="far fa-bookmark" type="button">
-        Add to favorite
+      <button className="far fa-bookmark" type="button" onClick={addToWatchList}>
+        Add to watchlist
+      </button>
+      <p>{message}</p>
+      <button type="button">
+        <Link to="/profile">Profile</Link>
       </button>
     </div>
   );
