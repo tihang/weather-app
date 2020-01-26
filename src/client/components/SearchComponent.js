@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import ReactLoading from 'react-loading';
 import ResultComponent from './ResultComponent';
 
 export default function SearchComponent() {
   const [CityName, setCityName] = useState([]);
   const [Result, setResult] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     setCityName(e.target.value);
   };
 
@@ -24,13 +26,16 @@ export default function SearchComponent() {
           setResult(error);
         }
       }
+      setIsLoading(false);
     }
+    setIsLoading(true);
     getData();
   }, [CityName]);
 
   return (
     <div className="search-component">
       <input type="text" onChange={handleChange} />
+      {isLoading ? <ReactLoading type="spin" color="grey" height={60} width={60} /> : null}
       <ResultComponent Result={Result} />
     </div>
   );
