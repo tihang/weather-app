@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 import ProfileDetail from '../components/ProfileDetail';
 import DetailCardComponent from '../components/DetailCardComponent';
 
@@ -12,6 +13,7 @@ const Profile = () => {
     savedCityId: []
   });
 
+  const [isLoading, setIsLoading] = useState(true);
   const [resultData, setResultData] = useState([]);
 
   useEffect(() => {
@@ -57,12 +59,11 @@ const Profile = () => {
           ]);
         }
       });
-      return () => {
-        console.log('cleanup2');
-
-        isSubscribed = false;
-      };
+      setIsLoading(false);
     });
+    return () => {
+      isSubscribed = false;
+    };
   }, [profile.savedCityId]);
 
   const emptyArrayMessage = () => (
@@ -79,6 +80,7 @@ const Profile = () => {
       <h1>Profile</h1>
       <ProfileDetail profile={profile} />
       <h2>Watch List</h2>
+      {isLoading ? <ReactLoading type="spin" color="grey" height={80} width={80} /> : null}
       {resultData.length < 1 ? emptyArrayMessage() : null}
       {resultData.map((result, i) => (
         <DetailCardComponent key={(result.id, i)} data={result} />
