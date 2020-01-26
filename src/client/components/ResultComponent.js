@@ -8,7 +8,7 @@ const ResultComponent = ({ Result }) => (
       <ul key={item.id}>
         <li>{item.name}</li>
         <li>{item.country}</li>
-        <Link to={`/search/${item.id}`}>
+        <Link to={`/details/${item.id}`}>
           <button type="button">Get info</button>
         </Link>
       </ul>

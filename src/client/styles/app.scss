@@ -13,7 +13,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2px;
+  font-size: 2rem;
   font-weight: 500;
 }
 
@@ -106,13 +106,14 @@ body {
   .profile-page {
     h1 {
       color: $primary-color;
-      padding: 40px;
+      padding: 30px;
     }
 
     .profile-detail {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      padding: 20px;
 
       h4 {
         letter-spacing: 0.1rem;
@@ -140,7 +141,39 @@ body {
         }
       }
     }
+  }
 
+  .display-page {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+
+    button,
+    a {
+      background-color: $primary-color;
+      border-radius: 8px;
+      color: white;
+      width: 120px;
+      height: 40px;
+      align-self: center;
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    button.back-btn {
+      margin-left: 40px;
+      align-self: flex-start;
+    }
+
+    button.metric-btn {
+      align-self: flex-end;
+      width: 60px;
+    }
+  }
+
+  .search-page {
+    padding-top: 40px;
     .search-component {
       input {
         padding: 15px;
@@ -198,35 +231,6 @@ body {
           }
         }
       }
-    }
-  }
-
-  .display-page {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.4rem;
-
-    button,
-    a {
-      background-color: $primary-color;
-      border-radius: 8px;
-      color: white;
-      width: 120px;
-      height: 40px;
-      align-self: center;
-      margin: 20px;
-      cursor: pointer;
-    }
-
-    button.back-btn {
-      margin-left: 40px;
-      align-self: flex-start;
-    }
-
-    button.metric-btn {
-      align-self: flex-end;
-      width: 60px;
     }
   }
 }

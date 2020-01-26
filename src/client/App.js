@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PrivateRoute from './helpers/PrivateRoute';
 import Profile from './pages/Profile';
+import Details from './pages/Details';
 import Search from './pages/Search';
 import Home from './pages/Home';
 
@@ -19,7 +20,8 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <PrivateRoute path="/profile" component={Profile} />
-          <PrivateRoute path="/search/:id" component={Search} />
+          <PrivateRoute path="/search" component={Search} />
+          <PrivateRoute path="/details/:id" component={Details} />
         </Switch>
       </div>
     </Router>

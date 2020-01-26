@@ -24,10 +24,13 @@ const guestLinks = () => (
 );
 const userLink = () => (
   <ul>
-    <Link to="/profile">
+    <Link to="/">
       <li>
         <img src={Logo} alt="Logo" />
       </li>
+    </Link>
+    <Link to="/search">
+      <li>Search</li>
     </Link>
     <Link to="/profile">
       <li>Profile</li>

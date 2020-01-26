@@ -29,6 +29,8 @@ mongoose.connect(process.env.MONGO_KEY, {
   ssl: true,
   dbName: 'weatherapp'
 });
+mongoose.set('useFindAndModify', false);
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('MONGOOSE CONNECTION SUCCESSFUL'));
