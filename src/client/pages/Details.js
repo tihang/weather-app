@@ -27,7 +27,9 @@ const Search = () => {
         { savedCityId: searchData.id },
         { headers: { 'auth-token': localStorage.getItem('auth-token') } }
       );
-      if (result.status === 200) setMessage('Successfully added');
+      if (result.status === 200) {
+        history.push('/profile');
+      }
     } catch (error) {
       setMessage('Oops something went wrong!');
     }
