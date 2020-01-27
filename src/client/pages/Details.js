@@ -65,7 +65,7 @@ const Search = () => {
         {'<- Go back'}
       </button>
       <h1>Detail</h1>
-      <DetailCardComponent data={searchData} />
+      <DetailCardComponent data={searchData} remove={false} />
       <button className="far fa-bookmark" type="button" onClick={addToWatchList}>
         Add to watchlist
       </button>

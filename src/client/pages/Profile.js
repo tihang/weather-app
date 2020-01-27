@@ -83,7 +83,7 @@ const Profile = () => {
       {isLoading ? <ReactLoading type="spin" color="grey" height={80} width={80} /> : null}
       {resultData.length < 1 ? emptyArrayMessage() : null}
       {resultData.map((result, i) => (
-        <DetailCardComponent key={(result.id, i)} data={result} />
+        <DetailCardComponent key={(result.id, i)} data={result} remove />
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 @import "./reset";
 
 $primary-color: rgb(51, 51, 51);
+$danger: rgb(191, 6, 6);
 $secondary-color: #868b8c;
 
 * {
@@ -108,7 +109,6 @@ body {
       color: $primary-color;
       padding: 30px;
     }
-
     button {
       background-color: $primary-color;
       border-radius: 8px;
@@ -150,11 +150,14 @@ body {
           background-color: $primary-color;
           border-radius: 8px;
           color: white;
-          width: 120px;
+          width: 80px;
           height: 40px;
           align-self: center;
           margin: 20px;
           cursor: pointer;
+        }
+        .x-button {
+          background-color: $danger;
         }
       }
     }
