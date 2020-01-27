@@ -80,7 +80,9 @@ const Profile = () => {
       <h1>Profile</h1>
       <ProfileDetail profile={profile} />
       <h2>Watch List</h2>
-      {isLoading ? <ReactLoading type="spin" color="grey" height={80} width={80} /> : null}
+      {isLoading && resultData.length === 0 ? (
+        <ReactLoading className="loading-spinner" type="spin" color="grey" height={80} width={80} />
+      ) : null}
       {resultData.length < 1 ? emptyArrayMessage() : null}
       {resultData.map((result, i) => (
         <DetailCardComponent key={(result.id, i)} data={result} remove />

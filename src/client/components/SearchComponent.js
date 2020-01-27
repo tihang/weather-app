@@ -35,7 +35,9 @@ export default function SearchComponent() {
   return (
     <div className="search-component">
       <input type="text" onChange={handleChange} />
-      {isLoading ? <ReactLoading type="spin" color="grey" height={60} width={60} /> : null}
+      {isLoading ? (
+        <ReactLoading className="loading-spinner" type="spin" color="grey" height={60} width={60} />
+      ) : null}
       <ResultComponent Result={Result} />
     </div>
   );
