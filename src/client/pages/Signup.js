@@ -22,7 +22,7 @@ function Signup() {
         <input
           name="email"
           type="text"
-          placeholder="Email"
+          placeholder="Enter a valid email"
           autoComplete="off"
           onChange={e => setEmail(e.target.value)}
         />
@@ -30,7 +30,7 @@ function Signup() {
         <input
           name="name"
           type="text"
-          placeholder="Name"
+          placeholder="Full Name"
           autoComplete="off"
           onChange={e => setName(e.target.value)}
         />
@@ -38,7 +38,7 @@ function Signup() {
         <input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="Password atleast 6 characters"
           autoComplete="off"
           onChange={e => setPassword(e.target.value)}
         />
