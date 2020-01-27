@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import DetailCardComponent from '../components/DetailCardComponent';
 
@@ -70,9 +70,6 @@ const Search = () => {
         Add to watchlist
       </button>
       <p>{message}</p>
-      <button type="button">
-        <Link to="/profile">Profile</Link>
-      </button>
     </div>
   );
 };

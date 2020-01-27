@@ -44,8 +44,9 @@ const DetailCardComponent = ({ data, remove }) => {
             x
           </button>
         ) : null}
-        <li>{data.id}</li>
-        <li>{data.name}</li>
+        <li>
+          <h2>{data.name}</h2>
+        </li>
         <li>{data.weatherMain}</li>
         <li>{`Temperature: ${metricFunction.call(data.mainTemp)} °${metric} `}</li>
         <li>{`Feels Like: ${metricFunction.call(data.mainFeelsLike)} °${metric} `}</li>
