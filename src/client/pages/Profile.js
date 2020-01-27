@@ -16,6 +16,11 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [resultData, setResultData] = useState([]);
 
+  // To get rid of continuous spinning
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1000);
+
   useEffect(() => {
     // used isSubscribed to handle unfinished promise
     let isSubscribed = true;
@@ -80,7 +85,7 @@ const Profile = () => {
       <h1>Profile</h1>
       <ProfileDetail profile={profile} />
       <h2>Watch List</h2>
-      {isLoading && resultData.length === 0 ? (
+      {isLoading ? (
         <ReactLoading className="loading-spinner" type="spin" color="grey" height={80} width={80} />
       ) : null}
       {resultData.length < 1 ? emptyArrayMessage() : null}
@@ -91,51 +96,3 @@ const Profile = () => {
   );
 };
 export default Profile;
-
-// useEffect(() => {
-//   async function getData() {
-//     let isSubscribed = true;
-//     // Getting weather data after profile data
-//     if (isSubscribed) {
-//       profile.savedCityId.forEach(async (cityId) => {
-//         try {
-//           const result = await Axios.get('/api/getWeatherById', {
-//             params: { id: cityId },
-//             headers: { 'auth-token': localStorage.getItem('auth-token') }
-//           });
-//           setResultData(existingArrayVal => [
-//             ...existingArrayVal,
-//             {
-//               id: result.data.data.id,
-//               name: result.data.data.name,
-//               weatherMain: result.data.data.weather[0].main,
-//               mainTemp: result.data.data.main.temp,
-//               mainFeelsLike: result.data.data.main.feels_like,
-//               mainTempMax: result.data.data.main.temp_max,
-//               mainTempMin: result.data.data.main.temp_min
-//             }
-//           ]);
-//         } catch (error) {
-//           setResultData(error);
-//         }
-//       });
-//     }
-//   }
-//   getData();
-// }, [profile.savedCityId]);
-
-// useEffect(() => {
-//   // Getting profile data first
-//   async function getData() {
-//     const user = await Axios.get('/api/profile/show', {
-//       headers: { 'auth-token': localStorage.getItem('auth-token') }
-//     });
-//     setProfile({
-//       name: user.data.name,
-//       email: user.data.email,
-//       date: user.data.date,
-//       savedCityId: user.data.savedCityId
-//     });
-//   }
-//   getData();
-// }, []);
